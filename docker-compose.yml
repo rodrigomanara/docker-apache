@@ -1,6 +1,7 @@
 version: '2'
 services:
   internal-infra:
+    container_name: container-test
     build: ./
     volumes:
       - ./Website:/var/www/html
@@ -10,4 +11,11 @@ services:
     environment:
         - VIRTUAL_HOST=dev.rodrigo.sexyindoor.com
         - LETSENCRYPT_HOST=dev.rodrigo.sexyindoor.com
-        - LETSENCRYPT_EMAIL=me@rodrigomanara.co.uk   
+        - LETSENCRYPT_EMAIL=me@rodrigomanara.co.uk
+    networks:
+        - internal-infra-network
+        
+networks:
+    internal-infra-network:
+        external:
+            name: portainer_webproxy        
