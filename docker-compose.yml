@@ -1,0 +1,13 @@
+version: '2'
+services:
+  internal-infra:
+    build: ./
+    volumes:
+      - ./Website:/var/www/html
+    ports:
+        - "80:80"
+        - "443:443"
+    environment:
+        - VIRTUAL_HOST=dev.rodrigo.sexyindoor.com
+        - LETSENCRYPT_HOST=dev.rodrigo.sexyindoor.com
+        - LETSENCRYPT_EMAIL=me@rodrigomanara.co.uk   
